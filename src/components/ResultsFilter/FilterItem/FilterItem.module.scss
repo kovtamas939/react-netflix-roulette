@@ -1,0 +1,13 @@
+.filterItem {
+    display: inline;
+    color: var(--color-light);
+    text-transform: uppercase;
+    font-size: var(--font-size-smaller);
+    padding: 1.8rem 1.2rem;
+    cursor: pointer;
+}
+
+.activeFilter {
+    border-bottom: 0.3rem solid var(--color-primary);
+    margin-bottom: -0.3rem;
+}

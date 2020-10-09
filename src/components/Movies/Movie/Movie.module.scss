@@ -1,0 +1,66 @@
+.movie {
+    position: relative;
+    cursor: pointer;
+
+    &:hover .dots {
+        display: flex;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1.5rem;
+
+        h3 {
+            font-size: var(--font-size-big);
+            color: var(--color-extra-light-dark);
+            font-weight: 500;
+            letter-spacing: 0;
+            line-height: 1.3;
+        }
+
+        p {
+            color: var(--color-extra-light-dark);
+        }
+    }
+
+    .releaseDate {
+        font-size: var(--font-size-smaller);
+        font-weight: 500;
+        padding: 0.2rem 1.2rem;
+        border: 0.1rem solid var(--color-extra-light-dark);
+        border-radius: 0.5rem;
+    }
+
+    .genres {
+        font-size: var(--font-size-smaller);
+        color: var(--color-extra-light-dark);
+    }
+
+    .dots {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 3.5rem;
+        height: 3.5rem;
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        background-color: rgba(22, 22, 22, 0.9);
+        border-radius: 50%;
+
+        .dot {
+            width: 0.4rem;
+            height: 0.4rem;
+            margin: 0.2rem 0;
+            border-radius: 50%;
+            background-color: var(--color-light);
+        }
+    }
+}

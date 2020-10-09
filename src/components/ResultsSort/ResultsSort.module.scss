@@ -1,0 +1,17 @@
+.resultsSort {
+    display: flex;
+    align-items: center;
+
+    @media only screen and (max-width: 900px) {
+        justify-content: center;
+        width: 100%;
+    }
+
+    p {
+        font-size: var(--font-size-smaller);
+        text-transform: uppercase;
+        font-weight: 200;
+        color: #fff;
+        margin-right: 3rem;
+    }
+}

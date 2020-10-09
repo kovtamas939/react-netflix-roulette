@@ -1,0 +1,67 @@
+:root {
+    // COLOR VARIABLES
+    --color-primary: #f65261;
+    --color-light: #fff;
+    --color-dark: #424242;
+    --color-light-dark: #555;
+    --color-extra-light-dark: #8f8f8f;
+    --color-background: #232323;
+
+    // FONT VARIABLES
+    --font-primary: 'Montserrat', sans-serif;
+
+    // FONT SIZES
+    --font-size-biggest: 5rem;
+    --font-size-big: 2.5rem;
+    --font-size-medium: 2rem;
+    --font-size-small: 1.8rem;
+    --font-size-smaller: 1.5rem;
+
+    @media only screen and (max-width: 900px) {
+        --font-size-big: 2rem;
+        --font-size-small: 1.6rem;
+        --font-size-smaller: 1.3rem;
+    }
+
+    @media only screen and (max-width: 900px) {
+        --font-size-big: 1.8rem;
+    }
+
+    @media only screen and (max-width: 730px) {
+        --font-size-biggest: 4rem;
+        --font-size-medium: 1.5rem;
+    }
+
+    @media only screen and (max-width: 600px) {
+        --font-size-biggest: 3rem;
+    }
+
+    @media only screen and (max-width: 480px) {
+        --font-size-smaller: 0.8rem;
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.1rem;
+    background-color: var(--color-background);
+    color: var(--color-light);
+}
+
+.layoutWrapper {
+}

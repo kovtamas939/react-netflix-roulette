@@ -1,0 +1,9 @@
+.resultsFilter {
+    display: flex;
+
+    @media only screen and (max-width: 900px) {
+        order: 2;
+        justify-content: center;
+        border-bottom: 0.3rem solid var(--color-dark);
+    }
+}
