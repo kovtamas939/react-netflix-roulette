@@ -1,0 +1,64 @@
+.search {
+    position: relative;
+    height: 40rem;
+    background-image: url('http://localhost:3000/img/header.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: 1rem solid var(--color-light-dark);
+
+    @media only screen and (max-width: 600px) {
+        height: unset;
+        padding-bottom: 4rem;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin: auto;
+    padding-top: 2rem;
+}
+
+.findMovies {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    max-width: 90rem;
+    margin: auto;
+
+    @media only screen and (max-width: 600px) {
+        width: 94%;
+    }
+
+    h2 {
+        width: 100%;
+        font-size: var(--font-size-biggest);
+        font-weight: 200;
+        text-transform: uppercase;
+        margin: 2rem 0;
+    }
+
+    form {
+        display: flex;
+        justify-content: space-between;
+
+        input {
+            width: 75%;
+
+            @media only screen and (max-width: 730px) {
+                width: calc(100% - 11.5rem);
+            }
+        }
+
+        button {
+            width: 23%;
+
+            @media only screen and (max-width: 730px) {
+                width: 10rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,67 @@
+.btn {
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.4rem;
+    font-size: var(--font-size-medium);
+    font-weight: 200;
+    letter-spacing: 0.1rem;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.btnAddMovie {
+    background-color: rgba(80, 80, 80, 0.85);
+    color: var(--color-primary);
+    padding: 1.4rem;
+
+    @media only screen and (max-width: 480px) {
+        padding: 1.2rem;
+    }
+}
+
+.btnSubmit {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    padding: 1.7rem;
+
+    @media only screen and (max-width: 480px) {
+        padding: 1.2rem;
+    }
+}
+
+.btnReleaseDate {
+    position: relative;
+    background-color: transparent;
+    font-size: var(--font-size-smaller);
+    color: var(--color-light);
+    padding-right: 2.5rem;
+}
+
+.arrowUp:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 0.6rem solid transparent;
+    border-right: 0.6rem solid transparent;
+    border-bottom: 0.6rem solid var(--color-primary);
+}
+
+.arrowDown:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 0.6rem solid transparent;
+    border-right: 0.6rem solid transparent;
+    border-top: 0.6rem solid var(--color-primary);
+}

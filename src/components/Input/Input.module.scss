@@ -1,0 +1,16 @@
+.input {
+    background-color: rgba(35, 35, 35, 0.8);
+    color: var(--color-light);
+    border: none;
+    font-size: var(--font-size-medium);
+    padding: 0 2rem;
+    border-radius: 0.4rem;
+
+    &:focus {
+        outline: none;
+    }
+
+    &::placeholder {
+        color: var(--color-light-dark);
+    }
+}
