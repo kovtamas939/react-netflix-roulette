@@ -1,10 +1,10 @@
 import React from 'react';
 import Footer from '../Footer/Footer';
-import styles from './Layout.module.scss';
+import './Layout.module.scss';
 
 const Layout: React.FC = ({ children }) => {
     return (
-        <div className={styles.layoutWrapper}>
+        <div>
             {children}
             <Footer />
         </div>

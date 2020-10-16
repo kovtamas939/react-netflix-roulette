@@ -1,0 +1,22 @@
+.deleteMovie {
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+        font-size: var(--font-size-big);
+        font-weight: 200;
+        text-transform: uppercase;
+    }
+
+    p {
+        font-size: var(--font-size-smaller);
+        margin: 2rem 0;
+    }
+
+    form {
+        .buttons {
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+}
