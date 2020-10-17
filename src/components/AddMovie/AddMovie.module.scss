@@ -1,0 +1,16 @@
+.addMovie {
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+        font-size: var(--font-size-big);
+        font-weight: 200;
+        text-transform: uppercase;
+    }
+    form {
+        .buttons {
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+}

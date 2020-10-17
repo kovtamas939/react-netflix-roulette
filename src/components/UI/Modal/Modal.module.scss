@@ -1,0 +1,12 @@
+.modal {
+    background-color: var(--color-background);
+    left: 50%;
+    max-width: 50rem;
+    padding: 4rem 5rem;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-out;
+    z-index: 500;
+    width: 90%;
+}

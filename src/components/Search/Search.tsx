@@ -1,15 +1,20 @@
 import React from 'react';
 import Logo from '../Logo/Logo';
 import Input from '../Input/Input';
-import Button from '../Button/Button';
+import Button from '../UI/Button/Button';
 import styles from './Search.module.scss';
 
-const Search: React.FC = () => {
+interface Props {
+    onClick: React.MouseEventHandler;
+}
+
+const Search: React.FC<Props> = ({ onClick }) => {
     return (
         <div className={styles.search}>
             <div className={styles.header}>
                 <Logo />
                 <Button
+                    onClick={onClick}
                     type="button"
                     title="+ add movie"
                     styleType="add-movie"
@@ -20,7 +25,7 @@ const Search: React.FC = () => {
                 <h2>find your movie</h2>
                 <form>
                     <Input />
-                    <Button type="submit" title="search" styleType="submit" />
+                    <Button type="submit" title="search" styleType="search" />
                 </form>
             </div>
         </div>

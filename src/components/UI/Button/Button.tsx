@@ -7,21 +7,27 @@ interface Props {
     title: string;
     styleType: string;
     onClick?: React.MouseEventHandler;
+    id?: number;
 }
 
 let cx = classnames.bind(styles);
 
-const Button: React.FC<Props> = ({ type, title, styleType, onClick }) => {
+const Button: React.FC<Props> = ({ type, title, styleType, onClick, id }) => {
     const buttonClasses = cx('btn', {
-        btnSubmit: styleType === 'submit',
+        btnSearch: styleType === 'search',
         btnAddMovie: styleType === 'add-movie',
         btnReleaseDate: styleType.includes('release-date'),
-        arrowUp: styleType === 'release-date-ans',
+        btnModalClose: styleType === 'modalClose',
+        btnInfoBlockClose: styleType === 'infoBlockClose',
+        btnInfoBlock: styleType === 'infoBlock',
+        btnReset: styleType === 'reset',
+        btnSubmit: styleType === 'submit',
+        arrowUp: styleType === 'release-date-asc',
         arrowDown: styleType === 'release-date-desc',
     });
 
     return (
-        <button onClick={onClick} className={buttonClasses} type={type}>
+        <button data-id={id} onClick={onClick} className={buttonClasses} type={type}>
             {title}
         </button>
     );

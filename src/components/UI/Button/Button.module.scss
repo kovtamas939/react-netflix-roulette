@@ -22,7 +22,7 @@
     }
 }
 
-.btnSubmit {
+.btnSearch {
     background-color: var(--color-primary);
     color: var(--color-light);
     padding: 1.7rem;
@@ -64,4 +64,58 @@
     border-left: 0.6rem solid transparent;
     border-right: 0.6rem solid transparent;
     border-top: 0.6rem solid var(--color-primary);
+}
+
+.btnModalClose {
+    background: transparent;
+    color: var(--color-light);
+    font-size: var(--font-size-big);
+    align-self: flex-end;
+    line-height: 1;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
+.btnInfoBlockClose {
+    background: transparent;
+    color: var(--color-light);
+    font-size: var(--font-size-smaller);
+    align-self: flex-end;
+    line-height: 1;
+    padding: 0.5rem 0.5rem 0;
+}
+
+.btnInfoBlock {
+    background-color: transparent;
+    color: var(--color-light);
+    font-size: var(--font-size-smaller);
+    text-transform: capitalize;
+    text-align: left;
+    border-radius: 0;
+    margin: 0.2rem 0;
+    padding: 0.5rem 2rem;
+
+    &:hover {
+        background-color: var(--color-primary);
+    }
+}
+
+.btnReset {
+    background-color: transparent;
+    color: var(--color-primary);
+    padding: 1rem 2rem;
+    border: 1px solid var(--color-primary);
+    font-size: var(--font-size-small);
+    align-self: flex-end;
+}
+
+.btnSubmit {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    padding: 1rem 2rem;
+    border: 1px solid var(--color-primary);
+    font-size: var(--font-size-small);
+    align-self: flex-end;
+    margin-left: 1rem;
 }

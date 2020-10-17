@@ -61,6 +61,19 @@
             margin: 0.2rem 0;
             border-radius: 50%;
             background-color: var(--color-light);
+            pointer-events: none;
         }
+    }
+
+    .infoBlock {
+        display: flex;
+        flex-direction: column;
+        width: 15rem;
+        height: 9rem;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--color-background);
+        border-radius: 0.3rem;
     }
 }
