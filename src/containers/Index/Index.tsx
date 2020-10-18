@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Search from '../../components/Search/Search';
 import ResultsFilter from '../../components/ResultsFilter/ResultsFilter';
 import ResultsSort from '../../components/ResultsSort/ResultsSort';
@@ -8,58 +8,85 @@ import Modal from '../../components/UI/Modal/Modal';
 import AddMovie from '../../components/AddMovie/AddMovie';
 import EditMovie from '../../components/EditMovie/EditMovie';
 import DeleteMovie from '../../components/DeleteMovie/DeleteMovie';
+import MovieDetails from '../../components/MovieDetails/MovieDetails';
+import NoMovie from '../../components/NoMovie/NoMovie';
 
 import mockedData from '../../mocked-data.json';
 
 import styles from './Index.module.scss';
 
 const Index: React.FC = () => {
-    const [activeFilter, setActiveFilter] = useState<string>('all');
+    const [activeFilter, setActiveFilter] = useState<string>('All');
     const [sortType, setSortType] = useState<string>('release-date-desc');
     const [modal, setModal] = useState<false | string>(false);
-    const [movies, setMovies] = useState<any>(mockedData);
+    const [filteredMovies, setFilteredMovies] = useState<any>(mockedData);
     const [moviesCounter, setMoviesCounter] = useState<number>(0);
     const [selectedMovie, setSelectedMovie] = useState<any>();
+    const [movieOpened, setMovieOpened] = useState<boolean | string>(false);
     const [isDotsClicked, setIsDotsClicked] = useState<boolean>(false);
 
-useEffect(() => {
-    setMoviesCounter(movies.length);
-},[movies])
+    const movies = mockedData;
 
-useEffect(() => {
-    let sortedMovies = movies.slice().sort((movieOne: any, movieTwo: any) => (new Date(movieOne.release_date) as any) - (new Date(movieTwo.release_date) as any))
-    if (sortType === 'release-date-desc') {
-        sortedMovies = sortedMovies.reverse();
+    useEffect(() => {
+        setMoviesCounter(filteredMovies.length);
+    },[filteredMovies]);
+
+    useEffect(() => {
+        setFilteredMovies(sortMovies(filteredMovies));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[sortType]);
+
+    const sortMovies = (movies: any) => {
+        let sortedMovies = movies.slice().sort((movieOne: any, movieTwo: any) => (new Date(movieOne.release_date) as any) - (new Date(movieTwo.release_date) as any))
+        if (sortType === 'release-date-desc') {
+            sortedMovies = sortedMovies.reverse();
+        }
+        return sortedMovies;
     }
-    setMovies(sortedMovies);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-},[sortType]);
-
+        
     const handleFilterOnClick = (e: any): void => {
         setActiveFilter(e.target.innerHTML);
+
+        if(e.target.innerHTML === 'All') {
+            setFilteredMovies(sortMovies(movies));
+        } else {
+            const newMoviesList = movies.filter((el: any) => {
+                var genresArray = Object.keys(el.genres).map((key) => el.genres[key]);
+                if(genresArray.includes(e.target.innerHTML)) {
+                    return el;
+                }
+            })
+            setFilteredMovies(sortMovies(newMoviesList));
+        }
     };
 
-    const handleSortOnClick = (e: any): void => {
+    const handleSortOnClick = useCallback((e: any): void => {
         if (e.target.getAttribute('class').includes('arrowDown')) {
             setSortType('release-date-asc');
         } else {
             setSortType('release-date-desc');
         }
-    };
+    }, []);
 
     const handleModalClose = (e: any): void => {
         setModal(false);
         setIsDotsClicked(false);
     }
 
-    const handleModalOpen = (e: any): void => {
-        const selectedMovie = movies.find( (el: any) => el.id === parseInt(e.target.getAttribute('data-id')));
+    const handleModalOpen = useCallback((e: any): void => {
+        const selectedMovie = filteredMovies.find( (el: any) => el.id === parseInt(e.target.getAttribute('data-id')));
         setSelectedMovie(selectedMovie);
         setModal(e.target.innerHTML);
-    }
+    }, []);
 
     const handleDotsClick = (e: any): void => {
-        setIsDotsClicked(e.target.getAttribute('data-id'))
+        setIsDotsClicked(e.target.getAttribute('data-id'));
+    }
+
+    const handleMovieOpen = (e: any): void => {
+        const selectedMovie = filteredMovies.find( (el: any) => el.id === parseInt(e.target.getAttribute('data-id')));
+        setMovieOpened(selectedMovie);
+        window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
     let modalChildren = null;
@@ -73,9 +100,17 @@ useEffect(() => {
         }
     }
 
+    let availableMovies;
+    if(filteredMovies.length === 0) {
+        availableMovies = <NoMovie />;
+    } else {
+        availableMovies = <><ResultsCount number={moviesCounter} />
+        <Movies movies={filteredMovies} buttonOnClick={handleModalOpen} closeOnClick={() => setIsDotsClicked(!isDotsClicked)} dotsOnClick={handleDotsClick} movieOnClick={handleMovieOpen} isDotsClicked={isDotsClicked} /></>
+    }
+
     return (
         <>
-            <Search onClick={handleModalOpen} />
+            {movieOpened ? <MovieDetails data={movieOpened} onClick={() => setMovieOpened(false)} /> : <Search onClick={handleModalOpen} />}
             <div className={styles.indexWrapper}>
                 <div className={styles.resultModifiers}>
                     <ResultsFilter
@@ -87,8 +122,7 @@ useEffect(() => {
                         onClick={handleSortOnClick}
                     />
                 </div>
-                <ResultsCount number={moviesCounter} />
-                <Movies movies={movies} onClick={handleModalOpen} closeOnClick={() => setIsDotsClicked(!isDotsClicked)} dotsOnClick={handleDotsClick} isDotsClicked={isDotsClicked} />
+                {availableMovies}
             </div>
             {modal ? <Modal onClick={handleModalClose}>{modalChildren}</Modal> : null}
         </>

@@ -7,7 +7,7 @@ interface Props {
     styleType: string;
 }
 
-const ResultsSort: React.FC<Props> = ({ onClick, styleType }) => {
+const ResultsSort: React.FC<Props> = React.memo( ({ onClick, styleType }) => {
     return (
         <div className={styles.resultsSort}>
             <p>sort by</p>
@@ -19,6 +19,6 @@ const ResultsSort: React.FC<Props> = ({ onClick, styleType }) => {
             />
         </div>
     );
-};
+});
 
 export default ResultsSort;

@@ -8,7 +8,7 @@ interface Props {
     onClick: React.MouseEventHandler;
 }
 
-const Search: React.FC<Props> = ({ onClick }) => {
+const Search: React.FC<Props> = React.memo( ({ onClick }) => {
     return (
         <div className={styles.search}>
             <div className={styles.header}>
@@ -30,6 +30,6 @@ const Search: React.FC<Props> = ({ onClick }) => {
             </div>
         </div>
     );
-};
+});
 
 export default Search;

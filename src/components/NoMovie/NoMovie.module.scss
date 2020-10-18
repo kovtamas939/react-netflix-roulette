@@ -1,0 +1,16 @@
+.NoMovie {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 53.3rem);
+
+    @media only screen and (max-width: 600px) {
+        min-height: 60vh;
+    }
+
+    p {
+        font-size: var(--font-size-biggest);
+        font-weight: 200;
+        text-align: center;
+    }
+}

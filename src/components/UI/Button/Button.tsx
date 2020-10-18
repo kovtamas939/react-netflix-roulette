@@ -15,6 +15,7 @@ let cx = classnames.bind(styles);
 const Button: React.FC<Props> = ({ type, title, styleType, onClick, id }) => {
     const buttonClasses = cx('btn', {
         btnSearch: styleType === 'search',
+        btnSearchIcon: styleType === 'searchIcon',
         btnAddMovie: styleType === 'add-movie',
         btnReleaseDate: styleType.includes('release-date'),
         btnModalClose: styleType === 'modalClose',

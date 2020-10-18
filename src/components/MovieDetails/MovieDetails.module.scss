@@ -1,0 +1,101 @@
+.MovieDetails {
+    position: relative;
+    background-image: url('http://localhost:3000/img/header.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: 1rem solid var(--color-light-dark);
+    padding-bottom: 4rem;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        width: 95%;
+        margin: auto;
+        padding-top: 2rem;
+    }
+
+    .movie {
+        display: flex;
+        justify-content: center;
+        width: 95%;
+        max-width: 181rem;
+        margin: auto;
+
+        @media only screen and (max-width: 800px) {
+            flex-wrap: wrap;
+        }
+
+        .image {
+            width: 20%;
+            min-width: 25rem;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .movieTexts {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            padding-left: 5rem;
+
+            @media only screen and (max-width: 800px) {
+                width: 100%;
+                padding-left: 0;
+            }
+
+            .title {
+                font-size: var(--font-size-biggest);
+                font-weight: 300;
+                margin-right: 2rem;
+            }
+
+            .voteAverage {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 6rem;
+                height: 6rem;
+                border: 1px solid var(--color-light);
+                border-radius: 50%;
+
+                p {
+                    font-size: var(--font-size-big);
+                    font-weight: 200;
+                    color: rgb(20, 168, 20);
+                }
+            }
+
+            .genres {
+                width: 100%;
+                font-size: var(--font-size-smaller);
+                font-weight: 300;
+                margin-bottom: 2rem;
+            }
+
+            .releaseDate {
+                font-size: var(--font-size-big);
+                color: var(--color-primary);
+                margin-right: 3rem;
+            }
+
+            .runtime {
+                font-size: var(--font-size-big);
+                color: var(--color-primary);
+            }
+
+            .overview {
+                font-size: var(--font-size-small);
+                font-weight: 200;
+                margin-top: 2rem;
+            }
+
+            .wrapper {
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+}
