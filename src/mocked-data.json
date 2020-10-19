@@ -1,19 +1,5 @@
 [
     {
-        "id": 168098,
-        "title": "Cell",
-        "tagline": "When everyone is connected no one is safe.",
-        "vote_average": 4.4,
-        "vote_count": 428,
-        "release_date": "2016-07-06",
-        "poster_path": "https://image.tmdb.org/t/p/w500/c5N6Pw3P6TqQnGcqiVkhO9u85KB.jpg",
-        "overview": "When a strange signal pulsates through all cell phone networks worldwide, it starts a murderous epidemic of epic proportions when users become bloodthirsty creatures, and a group of people in New England are among the survivors to deal with the ensuing chaos after.",
-        "budget": 0,
-        "revenue": 1133031,
-        "genres": ["Horror", "Science Fiction", "Thriller"],
-        "runtime": 98
-    },
-    {
         "id": 291870,
         "title": "Dirty Grandpa",
         "tagline": "This is Jason. He's a little worried about his grandpa.",
@@ -124,5 +110,261 @@
         "revenue": 1263521126,
         "genres": ["Family", "Fantasy", "Romance"],
         "runtime": 129
+    },
+    {
+        "id": 1268,
+        "title": "Mr. Bean's Holiday",
+        "tagline": "Disaster has a passport.",
+        "vote_average": 6.1,
+        "vote_count": 912,
+        "release_date": "2007-03-22",
+        "poster_path": "https://image.tmdb.org/t/p/w500/5G3gOZemcwXf2nbUFB4VCc5gl2A.jpg",
+        "overview": "Mr. Bean wins a trip to Cannes where he unwittingly separates a young boy from his father and must help the two reunite. On the way he discovers France, bicycling and true love, among other things.",
+        "budget": 25000000,
+        "revenue": 229736344,
+        "genres": [
+            "Family",
+            "Comedy"
+        ],
+        "runtime": 90
+    },
+    {
+        "id": 340022,
+        "title": "Gringo",
+        "tagline": "An American corporation, the Mexican cartel, chances are this won't end well.",
+        "vote_average": 6.5,
+        "vote_count": 27,
+        "release_date": "2018-03-09",
+        "poster_path": "https://image.tmdb.org/t/p/w500/dxeVPklFwng2IowqRPNI4od6aXv.jpg",
+        "overview": "An American businessman with a stake in a pharmaceutical company that's about to go public finds his life is thrown into turmoil by an incident in Mexico.",
+        "budget": 0,
+        "revenue": 0,
+        "genres": [
+            "Comedy",
+            "Drama",
+            "Action"
+        ],
+        "runtime": 110
+    },
+    {
+        "id": 426251,
+        "title": "Love After Love",
+        "tagline": "",
+        "vote_average": 0,
+        "vote_count": 1,
+        "release_date": "2018-03-30",
+        "poster_path": "https://image.tmdb.org/t/p/w500/rvPAfO18Kk4C9jcOvlJao70jSCj.jpg",
+        "overview": "A sixty-something mother and her two adult sons cope and move onward following the death of their larger-than-life father/husband.",
+        "budget": 0,
+        "revenue": 0,
+        "genres": [
+            "Drama"
+        ],
+        "runtime": 93
+    },
+    {
+        "id": 430040,
+        "title": "The Hurricane Heist",
+        "tagline": "The ultimate storm for the perfect heist.",
+        "vote_average": 5.4,
+        "vote_count": 34,
+        "release_date": "2018-02-01",
+        "poster_path": "https://image.tmdb.org/t/p/w500/wh1f7peigW0qUXXwynwVAt7axZd.jpg",
+        "overview": "Thieves attempt a massive heist against the U.S. Treasury as a Category 5 hurricane approaches one of its Mint facilities.",
+        "budget": 35000000,
+        "revenue": 5400000,
+        "genres": [
+            "Action",
+            "Crime",
+            "Thriller"
+        ],
+        "runtime": 100
+    },
+    {
+        "id": 487702,
+        "title": "F*&% the Prom",
+        "tagline": "",
+        "vote_average": 5.6,
+        "vote_count": 48,
+        "release_date": "2017-12-05",
+        "poster_path": "https://image.tmdb.org/t/p/w500/1vh1i0JwSeKs5sD8jamH4dvTmVX.jpg",
+        "overview": "Maddy and Cole were inseparable friends until high school started and Maddy became the most popular girl on campus. When she starts feeling lonely and heartbroken, she reconnects with Cole and the duo conspire to destroy the ultimate teen popularity contest",
+        "budget": 0,
+        "revenue": 0,
+        "genres": [
+            "Comedy"
+        ],
+        "runtime": 92
+    },
+    {
+        "id": 458355,
+        "title": "Bedroom Eyes",
+        "tagline": "",
+        "vote_average": 6,
+        "vote_count": 1,
+        "release_date": "2017-04-04",
+        "poster_path": "https://image.tmdb.org/t/p/w500/d2OBAb68xY4u6M6OV44hf1Rocrv.jpg",
+        "overview": "As police investigate a series of murders, all signs point to the lead detective's girlfriend: a gorgeous webcam girl who goes by the name \"Bedroom Eyes.\"",
+        "budget": 0,
+        "revenue": 0,
+        "genres": [
+            "Thriller"
+        ],
+        "runtime": 81
+    },
+    {
+        "id": 455714,
+        "title": "Bad Genius",
+        "tagline": "",
+        "vote_average": 7.4,
+        "vote_count": 73,
+        "release_date": "2017-05-03",
+        "poster_path": "https://image.tmdb.org/t/p/w500/mgyvwqn5SYKhfg5kofZDfgH8R0q.jpg",
+        "overview": "Welcome to an exam-cheating business run by Lynn, a straight-A student who gets the idea for her business after helping Grace and Pat. Grace is a prominent school activist who can’t get the grades she needs. Pat is a filthy-rich boy who believes money can buy anything. Lynn’s business skyrockets and the money starts to flood in as scores of students offer her cold hard cash in exchange for exam answers.",
+        "budget": 1700000,
+        "revenue": 0,
+        "genres": [
+            "Comedy",
+            "Thriller",
+            "Drama",
+            "Crime"
+        ],
+        "runtime": 130
+    },
+    {
+        "id": 5491,
+        "title": "Battlefield Earth",
+        "tagline": "Take Back The Planet",
+        "vote_average": 2.9,
+        "vote_count": 299,
+        "release_date": "2000-05-10",
+        "poster_path": "https://image.tmdb.org/t/p/w500/neMUscYddxr4cP8wnRHRMLcWS0A.jpg",
+        "overview": "In the year 3000, man is no match for the Psychlos, a greedy, manipulative race of aliens on a quest for ultimate profit. Led by the powerful Terl, the Psychlos are stripping Earth clean of its natural resources, using the broken remnants of humanity as slaves. What is left of the human race has descended into a near primitive state. After being captured, it is up to Tyler to save mankind.",
+        "budget": 44000000,
+        "revenue": 21400000,
+        "genres": [
+            "Action",
+            "Science Fiction",
+            "War"
+        ],
+        "runtime": 118
+    },
+    {
+        "id": 962,
+        "title": "The Gold Rush",
+        "tagline": "The World's Greatest Laughing Picture!",
+        "vote_average": 7.8,
+        "vote_count": 411,
+        "release_date": "1925-06-25",
+        "poster_path": "https://image.tmdb.org/t/p/w500/eQRFo1qwRREYwj47Yoe1PisgOle.jpg",
+        "overview": "A lone prospector ventures into Alaska looking for gold. He gets mixed up with some burly characters and falls in love with the beautiful Georgia. He tries to win her heart with his singular charm.",
+        "budget": 923000,
+        "revenue": 2500000,
+        "genres": [
+            "Adventure",
+            "Comedy",
+            "Drama"
+        ],
+        "runtime": 95
+    },
+    {
+        "id": 5781,
+        "title": "That Obscure Object of Desire",
+        "tagline": "Luis Buñuel's masterpiece",
+        "vote_average": 7.4,
+        "vote_count": 74,
+        "release_date": "1977-08-17",
+        "poster_path": "https://image.tmdb.org/t/p/w500/9iUdC4dftkjYSBUJq5DAxC6WqB9.jpg",
+        "overview": "After dumping a bucket of water on a beautiful young woman from the window of a train car, wealthy Frenchman Mathieu, regales his fellow passengers with the story of the dysfunctional relationship between himself and the young woman in question, a fiery 19-year-old flamenco dancer named Conchita. What follows is a tale of cruelty, depravity and lies -- the very building blocks of love.",
+        "budget": 0,
+        "revenue": 0,
+        "genres": [
+            "Comedy",
+            "Drama",
+            "Romance"
+        ],
+        "runtime": 103
+    },
+    {
+        "id": 347984,
+        "title": "6 Days",
+        "tagline": "London 1980, the world witnessed a new way to tackle terrorism.",
+        "vote_average": 5.9,
+        "vote_count": 176,
+        "release_date": "2017-08-03",
+        "poster_path": "https://image.tmdb.org/t/p/w500/yRbC0uRj1RDmF0JLon83il2dkR0.jpg",
+        "overview": "In April 1980, armed gunmen stormed the Iranian Embassy in Princes Gate, London and took all inside hostage. Over the next six days a tense standoff took place, all the while a group of highly trained soldiers from the SAS prepared for a raid the world had never seen the likes of.",
+        "budget": 0,
+        "revenue": 4886,
+        "genres": [
+            "Action"
+        ],
+        "runtime": 95
+    },
+    {
+        "id": 11878,
+        "title": "Yojimbo",
+        "tagline": "Better if all these men were dead. Think about it!",
+        "vote_average": 8,
+        "vote_count": 405,
+        "release_date": "1961-04-25",
+        "poster_path": "https://image.tmdb.org/t/p/w500/tN7kYPjRhDolpui9sc9Eq9n5b2O.jpg",
+        "overview": "A nameless ronin, or samurai with no master, enters a small village in feudal Japan where two rival businessmen are struggling for control of the local gambling trade. Taking the name Sanjuro Kuwabatake, the ronin convinces both silk merchant Tazaemon and sake merchant Tokuemon to hire him as a personal bodyguard, then artfully sets in motion a full-scale gang war between the two ambitious and unscrupulous men.",
+        "budget": 0,
+        "revenue": 0,
+        "genres": [
+            "Drama",
+            "Thriller"
+        ],
+        "runtime": 110
+    },
+    {
+        "id": 8816,
+        "title": "My Life as a Dog",
+        "tagline": "",
+        "vote_average": 7.4,
+        "vote_count": 83,
+        "release_date": "1985-12-12",
+        "poster_path": "https://image.tmdb.org/t/p/w500/eVg9IsX2HtR1BNYH0UAhF4JPHi7.jpg",
+        "overview": "A boy, obsessed with comparing himself with those less fortunate, experiences a different life at the home of his aunt and uncle in 1959 Sweden.",
+        "budget": 0,
+        "revenue": 0,
+        "genres": [
+            "Drama",
+            "Comedy"
+        ],
+        "runtime": 100
+    },
+    {
+        "id": 474753,
+        "title": "The China Hustle",
+        "tagline": "There are no good guys in this story.",
+        "vote_average": 6.5,
+        "vote_count": 5,
+        "release_date": "2018-03-30",
+        "poster_path": "https://image.tmdb.org/t/p/w500/3k6a2ZshjaFdN23bUm3kRdxr5Ny.jpg",
+        "overview": "An unsettling and eye-opening Wall Street horror story about Chinese companies, the American stock market, and the opportunistic greed behind the biggest heist you've never heard of.",
+        "budget": 0,
+        "revenue": 0,
+        "genres": [
+            "Documentary"
+        ],
+        "runtime": 82
+    },
+    {
+        "id": 464593,
+        "title": "Earth: One Amazing Day",
+        "tagline": "One day. One planet. Infinite wonder.",
+        "vote_average": 7.8,
+        "vote_count": 9,
+        "release_date": "2017-08-04",
+        "poster_path": "https://image.tmdb.org/t/p/w500/7OKStVtpeptnfIgxXEyQubMMTey.jpg",
+        "overview": "An astonishing journey revealing the awesome power of the natural world. Over the course of one single day, we track the sun from the highest mountains to the remotest islands to exotic jungles.",
+        "budget": 0,
+        "revenue": 0,
+        "genres": [
+            "Documentary"
+        ],
+        "runtime": 95
     }
 ]

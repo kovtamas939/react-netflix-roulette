@@ -13,27 +13,27 @@ const ResultsFilter: React.FC<Props> = ({ onClick, activeFilter }) => {
             <FilterItem
                 onClick={onClick}
                 activeFilter={activeFilter}
-                type="all"
+                type="All"
             />
             <FilterItem
                 onClick={onClick}
                 activeFilter={activeFilter}
-                type="documentary"
+                type="Documentary"
             />
             <FilterItem
                 onClick={onClick}
                 activeFilter={activeFilter}
-                type="comedy"
+                type="Comedy"
             />
             <FilterItem
                 onClick={onClick}
                 activeFilter={activeFilter}
-                type="horror"
+                type="Horror"
             />
             <FilterItem
                 onClick={onClick}
                 activeFilter={activeFilter}
-                type="crime"
+                type="Crime"
             />
         </ul>
     );
