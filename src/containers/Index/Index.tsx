@@ -51,10 +51,8 @@ const Index: React.FC = () => {
             setFilteredMovies(sortMovies(movies));
         } else {
             const newMoviesList = movies.filter((el: any) => {
-                var genresArray = Object.keys(el.genres).map((key) => el.genres[key]);
-                if(genresArray.includes(e.target.innerHTML)) {
-                    return el;
-                }
+                const genresArray = Object.keys(el.genres).map((key) => el.genres[key]);
+                return (genresArray.includes(e.target.innerHTML)) ? el : null;
             })
             setFilteredMovies(sortMovies(newMoviesList));
         }
@@ -77,6 +75,7 @@ const Index: React.FC = () => {
         const selectedMovie = filteredMovies.find( (el: any) => el.id === parseInt(e.target.getAttribute('data-id')));
         setSelectedMovie(selectedMovie);
         setModal(e.target.innerHTML);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleDotsClick = (e: any): void => {
