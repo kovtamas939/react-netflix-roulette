@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions';
+
 import Logo from '../Logo/Logo';
 import Input from '../Input/Input';
 import Button from '../UI/Button/Button';
@@ -6,9 +9,24 @@ import styles from './Search.module.scss';
 
 interface Props {
     onClick: React.MouseEventHandler;
+    onFetchMovies: any;
+    onFilterChanged: any;
 }
 
-const Search: React.FC<Props> = React.memo( ({ onClick }) => {
+const Search: React.FC<Props> = ({ onClick, onFetchMovies, onFilterChanged }) => {
+    const [searchForm, setSearchForm] = useState<string>('');
+
+    const handleValueChange = (e: any): void => {
+        setSearchForm(e.target.value);
+    }
+
+    const handleSendForm = (e: any): void => {
+        e.preventDefault();
+        onFilterChanged('All');
+        onFetchMovies(searchForm.split(' ').join('%20'));
+        setSearchForm('');
+    }
+
     return (
         <div className={styles.search}>
             <div className={styles.header}>
@@ -24,12 +42,20 @@ const Search: React.FC<Props> = React.memo( ({ onClick }) => {
             <div className={styles.findMovies}>
                 <h2>find your movie</h2>
                 <form>
-                    <Input />
-                    <Button type="submit" title="search" styleType="search" />
+                    <Input onChange={handleValueChange} value={searchForm} />
+                    <Button type="submit" title="search" styleType="search" onClick={handleSendForm} />
                 </form>
             </div>
         </div>
     );
-});
+};
 
-export default Search;
+const mapDispatchToProps = (dispatch: any) => {
+    return { 
+        onFetchMovies: (searchQuery: any) =>  dispatch(actions.fetchMovies(searchQuery)),
+        onFilterChanged: (activeFilter: string) => dispatch(actions.setActiveFilter(activeFilter)),
+
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Search);

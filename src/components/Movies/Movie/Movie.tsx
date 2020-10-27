@@ -43,7 +43,7 @@ const Movie: React.FC<Props> = ({ data, buttonOnClick, closeOnClick, dotsOnClick
 
     return (
         <div className={styles.movie}>
-            <img src={data.poster_path} alt="movie" data-id={data.id} onClick={movieOnClick} />
+            <img src={data.poster_path} alt="movie" data-id={data.id} onClick={movieOnClick} onError={(e: any)=>{ e.target.onerror = null; e.target.src="http://localhost:3000/img/no_image_found.jpg" }} />
             <div className={styles.wrapper}>
                 <h3>{data.title}</h3>
                 <p className={styles.releaseDate}>

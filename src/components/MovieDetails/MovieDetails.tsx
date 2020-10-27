@@ -22,7 +22,7 @@ const MovieDetails: React.FC<Props> = ({ data, onClick }) => {
             </div>
             <div className={styles.movie}>
                 <div className={styles.image}>
-                    <img src={data.poster_path} alt="Movie poster"/>
+                    <img src={data.poster_path} alt="Movie poster" onError={(e: any)=>{e.target.onerror = null; e.target.src="http://localhost:3000/img/no_image_found.jpg"}} />
                 </div>
                 <div className={styles.movieTexts}>
                     <div className={styles.wrapper}>
@@ -32,7 +32,7 @@ const MovieDetails: React.FC<Props> = ({ data, onClick }) => {
                     <p className={styles.genres}>{data.genres.join(' & ')}</p>
                     <div className={styles.wrapper}>
                         <p className={styles.releaseDate}>{data.release_date.split('-')[0]}</p>
-                        <p className={styles.runtime}>{`${data.runtime} min`}</p>
+                        <p className={styles.runtime}>{data.runtime ? `${data.runtime} min` : ''}</p>
                     </div>
                     <p className={styles.overview}>{data.overview}</p>
                 </div>

@@ -47,6 +47,7 @@
             }
 
             .title {
+                max-width: calc(100% - 8rem);
                 font-size: var(--font-size-biggest);
                 font-weight: 300;
                 margin-right: 2rem;
