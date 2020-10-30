@@ -3,20 +3,7 @@ import Button from '../../UI/Button/Button';
 import styles from './Movie.module.scss';
 
 interface Props {
-    data: {
-        id: number;
-        title: string;
-        tagline: string;
-        vote_average: number;
-        vote_count: number;
-        release_date: string;
-        poster_path: string;
-        overview: string;
-        budget: number;
-        revenue: number;
-        genres: string[];
-        runtime: number;
-    };
+    data: Movie;
     buttonOnClick: React.MouseEventHandler;
     closeOnClick: React.MouseEventHandler;
     dotsOnClick: React.MouseEventHandler;

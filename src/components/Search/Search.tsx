@@ -9,18 +9,18 @@ import styles from './Search.module.scss';
 
 interface Props {
     onClick: React.MouseEventHandler;
-    onFetchMovies: any;
-    onFilterChanged: any;
+    onFetchMovies: Function;
+    onFilterChanged: Function;
 }
 
 const Search: React.FC<Props> = ({ onClick, onFetchMovies, onFilterChanged }) => {
     const [searchForm, setSearchForm] = useState<string>('');
 
-    const handleValueChange = (e: any): void => {
+    const handleValueChange = (e: InputType): void => {
         setSearchForm(e.target.value);
     }
 
-    const handleSendForm = (e: any): void => {
+    const handleSendForm = (e: ButtonType): void => {
         e.preventDefault();
         onFilterChanged('All');
         onFetchMovies(searchForm.split(' ').join('%20'));
@@ -52,7 +52,7 @@ const Search: React.FC<Props> = ({ onClick, onFetchMovies, onFilterChanged }) =>
 
 const mapDispatchToProps = (dispatch: any) => {
     return { 
-        onFetchMovies: (searchQuery: any) =>  dispatch(actions.fetchMovies(searchQuery)),
+        onFetchMovies: (searchQuery: string) =>  dispatch(actions.fetchMovies(searchQuery)),
         onFilterChanged: (activeFilter: string) => dispatch(actions.setActiveFilter(activeFilter)),
 
     }

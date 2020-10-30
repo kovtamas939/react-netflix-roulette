@@ -18,22 +18,23 @@ import Message from '../../components/Message/Message';
 import styles from './Index.module.scss';
 
 interface Props {
-    movies: [];
-    filteredMovies: [];
+    movies: Movie[];
+    filteredMovies: Movie[];
     activeFilter: string;
-    onFilterChanged: any;
-    onFilterSelected: any;
-    onSortSelected: any;
+    onFilterChanged: Function;
+    onFilterSelected: Function;
+    onSortSelected: Function;
     sortType: string;
-    onSortTypeChanged: any;
-    onMovieDeleted: any;
-    modal: false | string;
-    onSetModal: any;
-    movieOpened: false | {};
-    onMovieOpened: any;
+    onSortTypeChanged: Function;
+    onMovieDeleted: Function;
+    modal: boolean | string;
+    onSetModal: Function;
+    isMovieOpened: boolean,
+    movieOpened: Movie | null;
+    onMovieOpened: Function;
 }
 
-const Index: React.FC<Props> = ({ movies, filteredMovies, activeFilter, onFilterChanged, onFilterSelected, onSortSelected, sortType, onSortTypeChanged, onMovieDeleted, modal, onSetModal, movieOpened, onMovieOpened }) => {
+const Index: React.FC<Props> = ({ movies, filteredMovies, activeFilter, onFilterChanged, onFilterSelected, onSortSelected, sortType, onSortTypeChanged, onMovieDeleted, modal, onSetModal, isMovieOpened, movieOpened, onMovieOpened }) => {
     const [moviesCounter, setMoviesCounter] = useState<number>(0);
     const [selectedMovie, setSelectedMovie] = useState<any>();
     const [isDotsClicked, setIsDotsClicked] = useState<boolean>(false);
@@ -52,22 +53,22 @@ const Index: React.FC<Props> = ({ movies, filteredMovies, activeFilter, onFilter
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [movies])
 
-    const sortMovies = (movies: any) => {
+    const sortMovies = (movies: Movie[]) => {
         let sortedMovies = movies.slice().sort((movieOne: {release_date: string}, movieTwo: {release_date: string}) => (new Date(movieOne.release_date) as any) - (new Date(movieTwo.release_date) as any))
         if (sortType === 'release-date-desc') {
             sortedMovies = sortedMovies.reverse();
         }
         return sortedMovies;
     }
-        
+
     const handleFilterOnClick = (e: any): void => {
         onFilterChanged(e.target.innerHTML);
 
         if(e.target.innerHTML === 'All') {
             onFilterSelected(sortMovies(movies));
         } else {
-            const newMoviesList = movies.filter((el: any) => {
-                const genresArray = Object.keys(el.genres).map((key) => el.genres[key]);
+            const newMoviesList = movies.filter((el: Movie) => {
+                const genresArray = Object.keys(el.genres).map((key: any) => el.genres[key]);
                 return (genresArray.includes(e.target.innerHTML)) ? el : null;
             })
             onFilterSelected(sortMovies(newMoviesList));
@@ -83,7 +84,7 @@ const Index: React.FC<Props> = ({ movies, filteredMovies, activeFilter, onFilter
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handleModalClose = (e: any): void => {
+    const handleModalClose = (): void => {
         onSetModal(false);
         setIsDotsClicked(false);
     }
@@ -100,14 +101,14 @@ const Index: React.FC<Props> = ({ movies, filteredMovies, activeFilter, onFilter
     };
 
     const handleMovieOpen = (e: any): void => {
-        const selectedMovie = filteredMovies.find( (el: {id: number}) => el.id === parseInt(e.target.getAttribute('data-id')));
-        onMovieOpened(selectedMovie);
+        const selectedMovie = filteredMovies.find( (el: Movie) => el.id === parseInt(e.target.getAttribute('data-id')));
+        onMovieOpened(true, selectedMovie);
         window.scrollTo({top: 0, behavior: 'smooth'});
     };
 
-    const handleDeleteMovie = (e: any): void => {
+    const handleDeleteMovie = (e: React.MouseEvent<HTMLButtonElement>): void => {
         e.preventDefault();
-        onMovieDeleted(selectedMovie.id, movies, filteredMovies, movieOpened);
+        onMovieDeleted(selectedMovie.id, movies, filteredMovies, isMovieOpened, movieOpened);
     };
 
     let modalChildren = null;
@@ -145,7 +146,7 @@ const Index: React.FC<Props> = ({ movies, filteredMovies, activeFilter, onFilter
 
     return (
         <>
-            {movieOpened ? <MovieDetails data={movieOpened} onClick={() => onMovieOpened(false)} /> : <Search onClick={handleModalOpen} />}
+            {isMovieOpened ? <MovieDetails data={movieOpened} onClick={() => onMovieOpened(false)} /> : <Search onClick={handleModalOpen} />}
             <div className={styles.indexWrapper}>
                 <div className={styles.resultModifiers}>
                     <ResultsFilter
@@ -164,26 +165,27 @@ const Index: React.FC<Props> = ({ movies, filteredMovies, activeFilter, onFilter
     );
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AllState) => {
     return {
         movies: state.movies.movies,
         filteredMovies: state.movies.filteredMovies,
         activeFilter: state.filterAndSort.activeFilter,
         sortType: state.filterAndSort.sortType,
         modal: state.movies.modal,
+        isMovieOpened: state.movies.isMovieOpened,
         movieOpened: state.movies.movieOpened
     };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        onFilterSelected: (filteredMovies: any) => dispatch(actions.setFilteredMovies(filteredMovies)),
-        onSortSelected: (sortedMovies: any) => dispatch(actions.setSortedMovies(sortedMovies)),
-        onMovieDeleted: (movie: any, movies: any, filteredMovies: any, movieOpened: any) => dispatch(actions.deleteMovie(movie, movies, filteredMovies, movieOpened)),
+        onFilterSelected: (filteredMovies: Movie[]) => dispatch(actions.setFilteredMovies(filteredMovies)),
+        onSortSelected: (sortedMovies: Movie[]) => dispatch(actions.setSortedMovies(sortedMovies)),
+        onMovieDeleted: (movie: string, movies: Movie[], filteredMovies: Movie[], isMovieOpened: boolean, movieOpened: Movie | null) => dispatch(actions.deleteMovie(movie, movies, filteredMovies, isMovieOpened, movieOpened)),
         onFilterChanged: (activeFilter: string) => dispatch(actions.setActiveFilter(activeFilter)),
-        onSortTypeChanged: (sortType: any) => dispatch(actions.setSortType(sortType)),
-        onSetModal: (modalType: any) => dispatch(actions.setModal(modalType)),
-        onMovieOpened: (movie: any) => dispatch(actions.setMovieOpened(movie))
+        onSortTypeChanged: (sortType: string) => dispatch(actions.setSortType(sortType)),
+        onSetModal: (modalType: false | string) => dispatch(actions.setModal(modalType)),
+        onMovieOpened: (isMovieOpened: boolean, movieOpened: Movie | null) => dispatch(actions.setMovieOpened(isMovieOpened, movieOpened))
     };
 };
 

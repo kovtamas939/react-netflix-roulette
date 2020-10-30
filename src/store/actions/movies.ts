@@ -1,21 +1,23 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
+import { Action } from 'redux'
+import { ThunkAction } from 'redux-thunk';
 
-export const fetchMovies = (searchQuery: string) => {
-    return async (dispatch: any) => {
+export const fetchMovies = (searchQuery: string): ThunkAction<void, MoviesState, unknown, Action<string>> => {
+    return async dispatch => {
         try {
-            const result: any = await axios.get(`http://localhost:4000/movies?search=${searchQuery}&searchBy=title&limit=200`);
-            await dispatch(fetchMoviesSuccess(result));
+            const result: {data: {data: Movie[]}} = await axios.get(`http://localhost:4000/movies?search=${searchQuery}&searchBy=title&limit=200`);
+            await dispatch(fetchMoviesSuccess(result.data.data));
         } catch (error) {
             dispatch(fetchMoviesFailed());
         }
     };
 };
 
-export const fetchMoviesSuccess = (result: any) => {
+export const fetchMoviesSuccess = (result: Movie[]) => {
     return {
         type: actionTypes.FETCH_MOVIES_SUCCESS,
-        movies: result.data.data
+        movies: result
     };
 };
 
@@ -25,23 +27,24 @@ export const fetchMoviesFailed = () => {
     };
 };
 
-export const deleteMovie = (movie: string, movies: [], filteredMovies: [], movieOpened: false | {}) => {
-    return async (dispatch: any) => {
+export const deleteMovie = (movie: string, movies: Movie[], filteredMovies: Movie[], isMovieOpened: boolean, movieOpened: Movie | null): ThunkAction<void, MoviesState, unknown, Action<string>> => {
+    return async dispatch => {
         try {
             await axios.delete(`http://localhost:4000/movies/${movie}`);
-            await dispatch(deleteMovieSuccess(movie, movies, filteredMovies, movieOpened))
+            await dispatch(deleteMovieSuccess(movie, movies, filteredMovies, isMovieOpened, movieOpened))
         } catch (error) {
             dispatch(deleteMovieFailed());
         }
     };
 };
 
-export const deleteMovieSuccess = (movie: string, movies: [], filteredMovies: [], movieOpened: false | {}) => {
+export const deleteMovieSuccess = (movie: string, movies: Movie[], filteredMovies: Movie[], isMovieOpened: boolean, movieOpened: Movie | null) => {
     return {
         type: actionTypes.DELETE_MOVIE_SUCCESS,
         movie,
         movies,
         filteredMovies,
+        isMovieOpened,
         movieOpened
     };
 };
@@ -52,8 +55,8 @@ export const deleteMovieFailed = () => {
     };
 };
 
-export const addMovie = (movie: {}) => {
-    return async (dispatch: any) => {
+export const addMovie = (movie: Movie): ThunkAction<void, MoviesState, unknown, Action<string>> => {
+    return async dispatch => {
         try {
             await axios.post(`http://localhost:4000/movies`, { ...movie });
             await dispatch(addMovieSuccess());
@@ -75,21 +78,21 @@ export const addMovieFailed = () => {
     };
 };
 
-export const editMovie = (movie: {}, movies: [], filteredMovies: [], movieOpened: false | {}) => {
-    return async (dispatch: any) => {
+export const editMovie = (editedMovie: Movie, movies: Movie[], filteredMovies: Movie[], movieOpened: Movie | null): ThunkAction<void, MoviesState, unknown, Action<string>> => {
+    return async dispatch => {
         try {
-            await axios.put(`http://localhost:4000/movies`, { ...movie });
-            await dispatch(editMovieSuccess(movie, movies, filteredMovies, movieOpened))
+            await axios.put(`http://localhost:4000/movies`, { ...editedMovie });
+            await dispatch(editMovieSuccess(editedMovie, movies, filteredMovies, movieOpened))
         } catch (error) {
             dispatch(editMovieFailed());
         }
     };
 };
 
-export const editMovieSuccess = (movie: {}, movies: [], filteredMovies: [], movieOpened: false | {}) => {
+export const editMovieSuccess = (editedMovie: Movie, movies: Movie[], filteredMovies: Movie[], movieOpened: Movie | null) => {
     return {
         type: actionTypes.EDIT_MOVIE_SUCCESS,
-        movie,
+        editedMovie,
         movies,
         filteredMovies,
         movieOpened
@@ -102,14 +105,14 @@ export const editMovieFailed = () => {
     };
 };
 
-export const setFilteredMovies = (filteredMovies: {}) => {
+export const setFilteredMovies = (filteredMovies: Movie[]) => {
     return {
         type: actionTypes.SET_FILTERED_MOVIES,
         filteredMovies
     };
 };
 
-export const setSortedMovies = (sortedMovies: {}) => {
+export const setSortedMovies = (sortedMovies: Movie[]) => {
     return {
         type: actionTypes.SET_SORTED_MOVIES,
         sortedMovies
@@ -123,9 +126,10 @@ export const setModal = (modalType: boolean | string) => {
     };
 };
 
-export const setMovieOpened = (movie: false | {}) => {
+export const setMovieOpened = (isMovieOpened: boolean, movieOpened: Movie | null) => {
     return {
         type: actionTypes.SET_MOVIE_OPENED,
-        movie
+        isMovieOpened,
+        movieOpened
     }
 }

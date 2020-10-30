@@ -8,11 +8,11 @@ import styles from './EditMovie.module.scss';
 
 interface Props {
     onClick: React.MouseEventHandler;
-    selectedMovie: {id: string, title: string, release_date: string, poster_path: string, genres: string[], overview: string, runtime: any};
-    onEditMovie: any;
-    movies: [];
-    filteredMovies: [];
-    movieOpened: false | {};
+    selectedMovie: EditMovie;
+    onEditMovie: Function;
+    movies: Movie[];
+    filteredMovies: Movie[];
+    movieOpened: Movie | null;
 }
 
 const EditMovie: React.FC<Props> = ({ selectedMovie, onClick, onEditMovie, movies, filteredMovies, movieOpened }) => {
@@ -29,7 +29,7 @@ const EditMovie: React.FC<Props> = ({ selectedMovie, onClick, onEditMovie, movie
     },[])
 
     const setGenresValues = () => {
-        let selectedGenres: any = [];
+        let selectedGenres: Genre[] = [];
         selectedMovie.genres.forEach(el => {
             return selectedGenres.push({label: el, value: el})
         });
@@ -45,18 +45,18 @@ const EditMovie: React.FC<Props> = ({ selectedMovie, onClick, onEditMovie, movie
         setRuntime(selectedMovie.runtime); 
     }
 
-    const handleEditMovie = (e: any): void => {
+    const handleEditMovie = (e: ButtonType): void => {
         e.preventDefault();
-        const editedMovie: any = {
+        const editedMovie: EditMovie = {
             id: selectedMovie.id,
             title,
             release_date: releaseDate,
             poster_path: posterPath,
             overview,
             runtime: runtime ? runtime : 0,
-            genres: [], 
+            genres: [],
         }
-        genres.forEach((el: any) => editedMovie.genres.push(el.value));
+        genres.forEach((el: Genre) => editedMovie.genres.push(el.value));
         onEditMovie(editedMovie, movies, filteredMovies, movieOpened);
     }
 
@@ -67,33 +67,32 @@ const EditMovie: React.FC<Props> = ({ selectedMovie, onClick, onEditMovie, movie
             <p className={styles.movieId}>movie id</p>
             <p className={styles.movieIdValue}>{selectedMovie.id}</p>
             <form>
-                <Input elementType='input' label='title' placeholder='Title here' value={title} onChange={(e: any) => setTitle(e.target.value)} />
-                <Input elementType='date' label='release date' placeholder='Select Date' value={releaseDate} onChange={(e: any) => setReleaseDate(e.target.value)} />
-                <Input elementType='url' label='movie url' placeholder='Movie URL here' value={posterPath} onChange={(e: any) => setPosterPath(e.target.value)} />
+                <Input elementType='input' label='title' placeholder='Title here' value={title} onChange={(e: InputType) => setTitle(e.target.value)} />
+                <Input elementType='date' label='release date' placeholder='Select Date' value={releaseDate} onChange={(e: InputType) => setReleaseDate(e.target.value)} />
+                <Input elementType='url' label='movie url' placeholder='Movie URL here' value={posterPath} onChange={(e: InputType) => setPosterPath(e.target.value)} />
                 <Input elementType='select' label='genre' value={genres} onChange={setGenres} />
-                <Input elementType='text' label='overview' placeholder='Overview here' value={overview} onChange={(e: any) => setOverview(e.target.value)} />
-                <Input elementType='text' label='runtime' placeholder='Runtime here' value={runtime} onChange={(e: any) => setRuntime(parseInt(e.target.value))} />
+                <Input elementType='text' label='overview' placeholder='Overview here' value={overview} onChange={(e: InputType) => setOverview(e.target.value)} />
+                <Input elementType='text' label='runtime' placeholder='Runtime here' value={runtime} onChange={(e: InputType) => setRuntime(parseInt(e.target.value))} />
                 <div className={styles.buttons}>
                     <Button onClick={handleReset} type="button" title="reset" styleType="reset"/>
                     <Button onClick={handleEditMovie} type="submit" title="submit" styleType="submit"/>
                 </div>
-
             </form>
         </div>
     )
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AllState) => {
     return {
         movies: state.movies.movies,
         filteredMovies: state.movies.filteredMovies,
-        movieOpened: state.movies.movieOpened,
+        movieOpened: state.movies.movieOpened
     };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        onEditMovie: (movie: any, movies: any, filteredMovies: any, movieOpened: any) => dispatch(actions.editMovie(movie, movies, filteredMovies, movieOpened))
+        onEditMovie: (editedMovie: Movie, movies: Movie[], filteredMovies: Movie[], movieOpened: Movie | null) => dispatch(actions.editMovie(editedMovie, movies, filteredMovies, movieOpened))
     };
 };
 
