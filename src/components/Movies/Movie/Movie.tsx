@@ -3,20 +3,7 @@ import Button from '../../UI/Button/Button';
 import styles from './Movie.module.scss';
 
 interface Props {
-    data: {
-        id: number;
-        title: string;
-        tagline: string;
-        vote_average: number;
-        vote_count: number;
-        release_date: string;
-        poster_path: string;
-        overview: string;
-        budget: number;
-        revenue: number;
-        genres: string[];
-        runtime: number;
-    };
+    data: Movie;
     buttonOnClick: React.MouseEventHandler;
     closeOnClick: React.MouseEventHandler;
     dotsOnClick: React.MouseEventHandler;
@@ -43,7 +30,7 @@ const Movie: React.FC<Props> = ({ data, buttonOnClick, closeOnClick, dotsOnClick
 
     return (
         <div className={styles.movie}>
-            <img src={data.poster_path} alt="movie" data-id={data.id} onClick={movieOnClick} />
+            <img src={data.poster_path} alt="movie" data-id={data.id} onClick={movieOnClick} onError={(e: any)=>{ e.target.onerror = null; e.target.src="http://localhost:3000/img/no_image_found.jpg" }} />
             <div className={styles.wrapper}>
                 <h3>{data.title}</h3>
                 <p className={styles.releaseDate}>

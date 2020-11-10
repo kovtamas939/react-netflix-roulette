@@ -6,7 +6,7 @@ interface Props {
     type: 'button' | 'submit' | 'reset' | undefined;
     title: string;
     styleType: string;
-    onClick?: React.MouseEventHandler;
+    onClick: React.MouseEventHandler;
     id?: number;
 }
 
